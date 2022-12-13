@@ -1,19 +1,20 @@
-# services:
-#   - docker
+services:
+  - docker
 
-# # Pre-testing installs
-# install:
-#   - echo "nothing needs to be installed"
+# Pre-testing installs
+install:
+  - echo "nothing needs to be installed"
 
-# # Scripts to be run such as tests
-# before_script:
-#   - echo "no tests"
+# Scripts to be run such as tests
+before_script:
+  - echo "no tests"
 
-# script:
-#   - docker --version # print the version for logging
-#   - docker build -t todoapp-frontend .
-#   - docker tag todoapp-frontend "$DOCKER_USERNAME"/todoapp-frontend:latest
+script:
+  - docker --version # print the version for logging
+  - docker build -t todoapp-frontend .
+  - docker tag todoapp-frontend trinhnt30/todoapp-frontend:latest
 
-# after_success:
-#   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-#   - docker push "$DOCKER_USERNAME"/todoapp-frontend
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  
+  - docker push trinhnt30/todoapp-frontend

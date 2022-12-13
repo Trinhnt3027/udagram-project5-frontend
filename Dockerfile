@@ -1,5 +1,4 @@
-# Use NodeJS base image
-FROM node:13
+FROM node:12
 
 WORKDIR /usr/src/app
  
@@ -12,10 +11,7 @@ RUN npm install
 RUN npm run build
 
 RUN apt-get update \
-    && apt-get install -y nginx --option=Dpkg::Options::=--force-confdef\
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && echo "daemon off;" >> /etc/nginx/nginx.conf
+    && apt-get install -y nginx
 
 WORKDIR /www/data
 

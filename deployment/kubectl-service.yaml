@@ -3,17 +3,12 @@ kind: Service
 metadata:
   labels:
     app: todoapp-frontend
-  name: todoapp-frontend-svc
-  namespace: default
-  selfLink: /api/v1/namespaces/default/services/todoapp-frontend-svc
+  name: todoapp-frontend
 spec:
   ports:
-  - port: 8080
-    protocol: TCP
+  - name: "8080"
+    port: 8080
     targetPort: 8080
   selector:
-    app: todoapp-frontend
-  sessionAffinity: None
+    service: todoapp-frontend
   type: LoadBalancer
-status:
-  loadBalancer: {}
