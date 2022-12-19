@@ -3,9 +3,9 @@ kind: Deployment
 metadata:
   name: todoapp-frontend
   labels:
-    service: todoapp-frontend
+    app: todoapp-frontend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: todoapp-frontend
@@ -15,10 +15,10 @@ spec:
         app: todoapp-frontend
     spec:
       containers:
-      - name: todoapp-frontend
-        image: trinhnt30/todoapp-frontend:latest
+      - image: trinhnt30/todoapp-frontend:latest
+        name: todoapp-frontend
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         imagePullPolicy: Always
         resources:
           requests:
